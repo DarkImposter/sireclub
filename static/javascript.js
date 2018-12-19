@@ -3,6 +3,7 @@ closeButton = document.getElementById("closeButton")
 shopButton = document.getElementById("shopButton")
 task = document.getElementById("task")
 enter = document.getElementById("enterButton")
+lounge = document.getElementById("lounge")
 let bround = "white"
 next = document.getElementById("nextButton")
 shopCloseButton = document.getElementById("shopCloseButton")
@@ -46,10 +47,12 @@ document.querySelectorAll(".button").forEach(function(btn) {
         b.target.removeAttribute('pressed');
     });
 });
-let secretnobadywilleverguessthisvarhaencription = 1;
+let secretnobadywilleverguessthisvarhaencription = 0;
 let done = false
 const bar = document.getElementById("pointBar")
 
+
+points.innerHTML = '<h1>Points:'+secretnobadywilleverguessthisvarhaencription+'</h1>'
 
 bar.style.width = `${secretnobadywilleverguessthisvarhaencription}px`
 let tasks = {
@@ -83,6 +86,7 @@ enter.addEventListener("click", ()=> {
         in1.style.display = "none"
         secretnobadywilleverguessthisvarhaencription += 5;
         bar.style.width = `${secretnobadywilleverguessthisvarhaencription}px`
+        points.innerHTML = '<h1>Points:'+secretnobadywilleverguessthisvarhaencription+'</h1>'
     }else{
         alert("Whoopsies! try again.")
     }
@@ -110,12 +114,21 @@ function listpick(list) {
 
 background.addEventListener("click", ()=> {
   if (secretnobadywilleverguessthisvarhaencription < 50) {
-    alert("you dont have enugh points")
+    alert("you dont have enough points")
   }else {
     col = listpick(colors)
     document.body.style.backgroundColor = col
     secretnobadywilleverguessthisvarhaencription -= 50
-
+    bar.style.width = `${secretnobadywilleverguessthisvarhaencription}px`
   }
 
+})
+lounge.addEventListener("click", ()=> {
+  if (secretnobadywilleverguessthisvarhaencription < 100) {
+    alert("you dont have enough points")
+  }else{
+
+
+
+  }
 })
