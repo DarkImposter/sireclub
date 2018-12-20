@@ -1,4 +1,8 @@
+html, body {
+  height: 100%;
+  margin: 0;
 
+}
 
 .header {
   padding: 30px;
@@ -9,7 +13,7 @@
   color: white;
   font-family: "Comic Sans MS";
   font-size: 18px;
-  height: 6rem;
+  height: 80px;
 }
 .centerd {
 
@@ -17,12 +21,15 @@
 
 
 .buttonwrapper{
-    width: 100%;
+    width: auto;
     padding: 3rem;
+
 }
 body{
+    display: flex;
     overflow-x: hidden;
     background-color: white;
+    flex-direction: column;
 
 }
 .button {
@@ -141,9 +148,15 @@ body{
     right: 0px;
 
 }
+#shitwrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
 
 .points {
-  position: relative;
+  position: absolute;
   left: 10px;
   font-size: 10;
   z-index: 1;
@@ -244,4 +257,8 @@ color: white;
   justify-content: center;
   align-items: center;
 
+}
+#custom {
+  display: flex;
+  align-items: center;
 }
