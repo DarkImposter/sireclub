@@ -1,9 +1,12 @@
 taskbutton = document.getElementById("taskButton")
 closeButton = document.getElementById("closeButton")
 shopButton = document.getElementById("shopButton")
+chatButton = document.getElementById("chatButton")
 task = document.getElementById("task")
 enter = document.getElementById("enterButton")
 lounge = document.getElementById("lounge")
+lamp = document.getElementById("lamp")
+chatRoom = document.getElementById("chatRoom")
 let bround = "white"
 next = document.getElementById("nextButton")
 shopCloseButton = document.getElementById("shopCloseButton")
@@ -35,6 +38,17 @@ function closeshop(){
     shopZoneContainer.classList.remove("shopZoneOpen")
     shopZoneContainer.classList.add("shopZoneClose")
 }
+function openchat() {
+  chatZoneContainer.classList.add("chatZoneOpen")
+  chatZoneContainer.classList.remove("chatZoneClose")
+}
+function closechat() {
+  chatZoneContainer.classList.remove("chatZoneOpen")
+  chatZoneContainer.classList.add("chatZoneClose")
+}
+
+chatButton.addEventListener("click", openchat)
+chatCloseButton.addEventListener("click", closechat)
 shopCloseButton.addEventListener("click", closeshop)
 shopButton.addEventListener("click", openShop)
 taskbutton.addEventListener("click", openTasks)
@@ -124,11 +138,19 @@ background.addEventListener("click", ()=> {
 
 })
 lounge.addEventListener("click", ()=> {
-  if (secretnobadywilleverguessthisvarhaencription < 100) {
+  if (secretnobadywilleverguessthisvarhaencription < 0) {
     alert("you dont have enough points")
   }else{
+    couches = ["couch1.png", "couch2.png",]
+    select = listpick(couches)
+    couch.setAttribute("src", select)
 
-
-
+  }
+})
+chatRoom.addEventListener("click", ()=> {
+  if (secretnobadywilleverguessthisvarhaencription < 900) {
+    alert("you dont have enough points")
+  }else{
+    alert("you now have one pass to the chat room!")
   }
 })
