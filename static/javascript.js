@@ -18,7 +18,13 @@ let tempTask
 const form = document.getElementById('form');
 e = ""
 
-
+const db = firebase.firestore();
+db.settings({timestampsInSnapshots:true});
+db.collection("posts").get().then(snapshot=> {
+  snapshot.docs.forEach(doc=>{
+    console.log(doc.body)
+  })
+})
 function openTasks(){
     done = false
     response = gentask()
