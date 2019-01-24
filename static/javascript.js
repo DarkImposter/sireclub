@@ -37,10 +37,12 @@ function submitPost(message){
   })
 }
 postSubmit.addEventListener("click", ()=>{
-  if (postIn.value == ""){
-    postIn.value = "Blank because youre a fucking looser"
+  if (postIn.value == "" || postIn.value.length > 180){
+    postIn.value = "";
+    console.log("ok no")
+  }else{
+    submitPost(postIn.value)
   }
-  submitPost(postIn.value);
   postIn.value = "";
 })
 
@@ -128,6 +130,8 @@ let tasks = {
     "math4":{type:"text", prompt:"what is 12 / 3?", answer:"4"},
     "fact1":{type:"text", prompt:"what is the most common letter in the englesh language?", answer:"e"},
     "fact2":{type:"text", prompt:"who was the first presedent of the US?", answer:"George Washington"},
+    "math5":{type:"text", prompt:"what is the oposite of a logoritham?", answer:"exponents"},
+    "fact5":{type:"text", prompt:"what is the capital of wyoming?", answer:"Cheyenne"}
 
 
 }
@@ -151,7 +155,7 @@ enter.addEventListener("click", ()=> {
         done = true;
         enterButton.style.display = "none"
         in1.style.display = "none"
-        secretnobadywilleverguessthisvarhaencription += 900;
+        secretnobadywilleverguessthisvarhaencription += 5;
         bar.style.width = `${secretnobadywilleverguessthisvarhaencription}px`
         points.innerHTML = '<h1>Points:'+secretnobadywilleverguessthisvarhaencription+'</h1>'
     }else{
