@@ -204,6 +204,7 @@ chatButton.addEventListener("click", ()=> {
   }else{
     alert("you now have one pass to the chat room!")
     openchat()
-    secretnobadywilleverguessthisvarhaencription -= 10;
+    secretnobadywilleverguessthisvarhaencription -= 10
+    bar.style.width = `${secretnobadywilleverguessthisvarhaencription}px`
   }
 })
