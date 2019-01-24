@@ -37,6 +37,9 @@ function submitPost(message){
   })
 }
 postSubmit.addEventListener("click", ()=>{
+  if (postIn.value == ""){
+    postIn.value = " "
+  }
   submitPost(postIn.value);
   postIn.value = "";
 })
@@ -148,7 +151,7 @@ enter.addEventListener("click", ()=> {
         done = true;
         enterButton.style.display = "none"
         in1.style.display = "none"
-        secretnobadywilleverguessthisvarhaencription += 5;
+        secretnobadywilleverguessthisvarhaencription += 900;
         bar.style.width = `${secretnobadywilleverguessthisvarhaencription}px`
         points.innerHTML = '<h1>Points:'+secretnobadywilleverguessthisvarhaencription+'</h1>'
     }else{
