@@ -38,7 +38,7 @@ function submitPost(message){
 }
 postSubmit.addEventListener("click", ()=>{
   if (postIn.value == ""){
-    postIn.value = " "
+    postIn.value = "Blank because youre a fucking looser"
   }
   submitPost(postIn.value);
   postIn.value = "";
