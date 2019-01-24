@@ -199,10 +199,11 @@ lounge.addEventListener("click", ()=> {
   }
 })
 chatButton.addEventListener("click", ()=> {
-  if (secretnobadywilleverguessthisvarhaencription < 900) {
+  if (secretnobadywilleverguessthisvarhaencription < 10) {
     alert("you dont have enough points")
   }else{
     alert("you now have one pass to the chat room!")
     openchat()
+    secretnobadywilleverguessthisvarhaencription -= 10;
   }
 })
