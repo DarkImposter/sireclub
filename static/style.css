@@ -168,6 +168,7 @@ body{
 }
 
 .input {
+    display: flex;
     align-items: left;
     display: none;
 }
@@ -221,6 +222,7 @@ body{
   width: 60%;
   height: 70%;
   position: relative;
+  /* overflow-y: auto; */
 }
 .chatZoneOpen {
   display: flex;
@@ -320,10 +322,55 @@ color: white;
   align-items: center;
   justify-content: center;
   display: flex;
-
+  overflow-y: auto;
 }
 .chatwrapper {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+#posts {
+  position: absolute;
+  display: flex;
+  bottom: 1rem;
+  left: 1rem;
+  align-items: baseline;
+}
+.chatInput{
+  display: flex;
+  height: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+
+}
+#postSubmit {
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  text-align: center;
+  align-items: center;
+  padding: 0px !important;
+}
+#submitText {
+  font-size: 18px !important;
+  padding: 0px;
+  margin: 0px;
+}
+#postWrapper {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 80%;
+  /* overflow-y: auto */
+}
+
+.pins {
+  background-color: grey;
+  border: .2rem solid gold;
+  min-height: 3rem !important;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: .1rem;
 }

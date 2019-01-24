@@ -7,7 +7,9 @@ enter = document.getElementById("enterButton")
 lounge = document.getElementById("lounge")
 lamp = document.getElementById("lamp")
 chatRoom = document.getElementById("chatRoom")
+submitText = document.getElementById("submitText")
 let bround = "white"
+let fin = false;
 next = document.getElementById("nextButton")
 shopCloseButton = document.getElementById("shopCloseButton")
 const taskZoneContainer = document.getElementById("taskZoneContainer")
@@ -17,14 +19,50 @@ let response;
 let tempTask
 const form = document.getElementById('form');
 e = ""
-
+const postIn = document.getElementById("postIn")
+const postSubmit = document.getElementById("postSubmit")
 const db = firebase.firestore();
 db.settings({timestampsInSnapshots:true});
-db.collection("posts").get().then(snapshot=> {
-  snapshot.docs.forEach(doc=>{
-    console.log(doc.body)
+
+db.collection("posts").onSnapshot(snapshot =>{
+  // document.getElementById("postWrapper").innerHTML = ""
+  snapshot.docChanges().forEach(change =>{
+    console.log(change.doc.data().post);
+    document.getElementById("postWrapper").innerHTML += genPosts(change.doc.data().post);
+  });
+});
+
+function submitPost(message){
+  db.collection("posts").add({
+    post:message
   })
+}
+postSubmit.addEventListener("click", ()=>{
+  submitPost(postIn.value);
+  postIn.value = "";
 })
+
+function genPosts(message){
+  return `
+<div class="post pins"><h1>${message}</h1></div>
+  `
+}
+
+
+function getPosts(){
+  console.log("posts gettin");
+  db.collection("posts").get().then(snapshot=> {
+    snapshot.docs.forEach(doc=>{
+      console.log(doc.data().post);
+      document.getElementById("postWrapper").innerHTML = "<div class='pins'>"+(genPosts(doc.data().post))+" "+"</div>"+document.getElementById("postWrapper").innerHTML
+    })
+  })
+}
+// getPosts();
+function getPoster(){
+    document.getElementById("postWrapper").innerHTML = ""
+    getPosts();
+}
 function openTasks(){
     done = false
     response = gentask()
@@ -49,11 +87,18 @@ function openchat() {
   chatZoneContainer.classList.remove("chatZoneClose")
 }
 function closechat() {
+  if (fin == false){
+  alert("Uh oh! if you leave the chat room, you wont be able to come back without paying points! If you're sure, just close the chat room again.")
+  fin = true;
+}else{
   chatZoneContainer.classList.remove("chatZoneOpen")
   chatZoneContainer.classList.add("chatZoneClose")
+  fin = false;
 }
 
-chatButton.addEventListener("click", openchat)
+}
+
+
 chatCloseButton.addEventListener("click", closechat)
 shopCloseButton.addEventListener("click", closeshop)
 shopButton.addEventListener("click", openShop)
@@ -144,7 +189,7 @@ background.addEventListener("click", ()=> {
 
 })
 lounge.addEventListener("click", ()=> {
-  if (secretnobadywilleverguessthisvarhaencription < 0) {
+  if (secretnobadywilleverguessthisvarhaencription < 100) {
     alert("you dont have enough points")
   }else{
     couches = ["couch1.png", "couch2.png",]
@@ -153,10 +198,11 @@ lounge.addEventListener("click", ()=> {
 
   }
 })
-chatRoom.addEventListener("click", ()=> {
+chatButton.addEventListener("click", ()=> {
   if (secretnobadywilleverguessthisvarhaencription < 900) {
     alert("you dont have enough points")
   }else{
     alert("you now have one pass to the chat room!")
+    openchat()
   }
 })
