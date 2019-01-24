@@ -126,6 +126,7 @@ let tasks = {
     "fact1":{type:"text", prompt:"what is the most common letter in the englesh language?", answer:"e"},
     "fact2":{type:"text", prompt:"who was the first presedent of the US?", answer:"George Washington"},
 
+
 }
 function gettasks() {
     const rand = Math.floor(Math.random()*Object.keys(tasks).length);
@@ -197,12 +198,12 @@ lounge.addEventListener("click", ()=> {
   }
 })
 chatButton.addEventListener("click", ()=> {
-  if (secretnobadywilleverguessthisvarhaencription < 10) {
+  if (secretnobadywilleverguessthisvarhaencription < 900) {
     alert("you dont have enough points")
   }else{
     alert("you now have one pass to the chat room!")
     openchat()
-    secretnobadywilleverguessthisvarhaencription -= 10
+    secretnobadywilleverguessthisvarhaencription -= 900
     bar.style.width = `${secretnobadywilleverguessthisvarhaencription}px`
     points.innerHTML = '<h1>Points:'+secretnobadywilleverguessthisvarhaencription+'</h1>'
   }
