@@ -27,7 +27,6 @@ db.settings({timestampsInSnapshots:true});
 db.collection("posts").onSnapshot(snapshot =>{
   // document.getElementById("postWrapper").innerHTML = ""
   snapshot.docChanges().forEach(change =>{
-    console.log(change.doc.data().post);
     document.getElementById("postWrapper").innerHTML += genPosts(change.doc.data().post);
   });
 });
@@ -53,7 +52,6 @@ function getPosts(){
   console.log("posts gettin");
   db.collection("posts").get().then(snapshot=> {
     snapshot.docs.forEach(doc=>{
-      console.log(doc.data().post);
       document.getElementById("postWrapper").innerHTML = "<div class='pins'>"+(genPosts(doc.data().post))+" "+"</div>"+document.getElementById("postWrapper").innerHTML
     })
   })
@@ -206,5 +204,6 @@ chatButton.addEventListener("click", ()=> {
     openchat()
     secretnobadywilleverguessthisvarhaencription -= 10
     bar.style.width = `${secretnobadywilleverguessthisvarhaencription}px`
+    points.innerHTML = '<h1>Points:'+secretnobadywilleverguessthisvarhaencription+'</h1>'
   }
 })
