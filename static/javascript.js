@@ -8,6 +8,7 @@ lounge = document.getElementById("lounge")
 lamp = document.getElementById("lamp")
 chatRoom = document.getElementById("chatRoom")
 submitText = document.getElementById("submitText")
+let pass = false;
 let bround = "white"
 let fin = false;
 next = document.getElementById("nextButton")
@@ -204,11 +205,17 @@ lounge.addEventListener("click", ()=> {
 
   }
 })
+chatRoom.addEventListener("click", ()=>{
+  if (secretnobadywilleverguessthisvarhaencription > 900){
+    pass = true;
+    alert("You now have one pass to the chat room")
+  }alert("you dont have enough points!")
+})
 chatButton.addEventListener("click", ()=> {
-  if (secretnobadywilleverguessthisvarhaencription < 900) {
-    alert("you dont have enough points")
+  if (pass = true) {
+    alert("you dont have a pass! get one from the shop.")
   }else{
-    alert("you now have one pass to the chat room!")
+    alert("your pass has been  used!")
     openchat()
     secretnobadywilleverguessthisvarhaencription -= 900
     bar.style.width = `${secretnobadywilleverguessthisvarhaencription}px`
